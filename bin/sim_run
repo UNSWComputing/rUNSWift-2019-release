@@ -1,0 +1,24 @@
+#!/bin/sh
+TEAM=18
+if [ "$#" -gt "0" ]; then
+    TEAM=$1
+fi
+
+FIRST_PLAYER_NUM=1
+LAST_PLAYER_NUM=5
+if [ "$#" -gt "1" ]; then
+    LAST_PLAYER_NUM=$2
+fi
+
+
+echo "Starting players $FIRST_PLAYER_NUM-$LAST_PLAYER_NUM robots on team $TEAM..."
+
+for i in $(seq $FIRST_PLAYER_NUM $LAST_PLAYER_NUM);
+do
+    echo $i
+    simswift -T $TEAM -n $i > /dev/null 2>&1 &
+
+    # Sleep for a bit, otherwise robots get launched in the same position,
+    # overlapping with each other and causing weird physics to happen in the simulator
+    sleep 1
+done

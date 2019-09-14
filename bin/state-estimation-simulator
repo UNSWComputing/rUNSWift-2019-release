@@ -1,0 +1,3 @@
+#!/bin/bash
+
+${RUNSWIFT_CHECKOUT_DIR}/build-release/utils/state-estimation-simulator/state-estimation-simulator.bin "$@"
