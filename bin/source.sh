@@ -51,8 +51,8 @@ function setupbash() {
 }
 
 function setupctc() {
-    mkdir -p "$RUNSWIFT_CHECKOUT_DIR"/ctc
-    cd "$RUNSWIFT_CHECKOUT_DIR"/ctc
+    mkdir -p "$RUNSWIFT_CHECKOUT_DIR"/softwares
+    cd "$RUNSWIFT_CHECKOUT_DIR"/softwares
 
     ASSETS_LOCATION="https://github.com/UNSWComputing/rUNSWift-assets/releases/download/v2017.1/"
     BOOST_HEADERS=boostheaders.zip
@@ -67,7 +67,7 @@ function setupctc() {
             # Aldebaran should provide a direct download link !!!
             exit 1
         fi
-        CTC_DIR="$RUNSWIFT_CHECKOUT_DIR"/ctc/ctc-linux64-atom-$CTC_VERSION
+        CTC_DIR="$RUNSWIFT_CHECKOUT_DIR"/softwares/ctc-linux64-atom-$CTC_VERSION
         [[ -d "$CTC_DIR" ]] || ( myecho Extracting cross toolchain ${LINUX_CTC_ZIP}, this may take a while... && unzip -q ${LINUX_CTC_ZIP} )
     done
 
@@ -76,7 +76,7 @@ function setupctc() {
             echo "Downloading modified boost headers"
             wget ${ASSETS_LOCATION}${BOOST_HEADERS}
         fi
-        BOOST_HEADER_DIR="$RUNSWIFT_CHECKOUT_DIR"/ctc/${LINUX_CTC_ZIP/.zip/}/boost/include/boost-1_55/boost/type_traits/detail/
+        BOOST_HEADER_DIR="$RUNSWIFT_CHECKOUT_DIR"/softwares/${LINUX_CTC_ZIP/.zip/}/boost/include/boost-1_55/boost/type_traits/detail/
         unzip -j -q -o ${BOOST_HEADERS} -d ${BOOST_HEADER_DIR}
         if [[ $(dpkg --print-architecture) == "i386" ]]; then
             # for running the Qt executables in sysroot_legacy
@@ -103,7 +103,7 @@ function setupctc() {
         # ease of backward compatibility.  they made no -mt the default well
         # before 1.55 so i'm not sure why someone explicitly enabled it for the
         # ctc, nor why the ctc does not match the v5
-        cd "$RUNSWIFT_CHECKOUT_DIR"/ctc/ctc-linux64-atom-$CTC_VERSION_2_1/boost/lib/
+        cd "$RUNSWIFT_CHECKOUT_DIR"/softwares/ctc-linux64-atom-$CTC_VERSION_2_1/boost/lib/
         for lib in libboost_*-mt-1_55.so.1.55.0; do
             ln -sf $lib ${lib/-mt-1_55.so.1.55.0/.so.1.55.0}
         done
@@ -112,14 +112,14 @@ function setupctc() {
 
     if [[ " ${CTC_VERSIONS[@]} " =~ " ${CTC_VERSION_2_1} " ]]; then
         echo "Changing permission on ctc dir"
-        chmod -R 755 "$RUNSWIFT_CHECKOUT_DIR"/ctc/ctc-linux64-atom-$CTC_VERSION_2_1/cross/bin
-        chmod -R 755 "$RUNSWIFT_CHECKOUT_DIR"/ctc/ctc-linux64-atom-$CTC_VERSION_2_1/cross/i686-aldebaran-linux-gnu/bin
-        chmod -R 755 "$RUNSWIFT_CHECKOUT_DIR"/ctc/ctc-linux64-atom-$CTC_VERSION_2_1/cross/libexec/
+        chmod -R 755 "$RUNSWIFT_CHECKOUT_DIR"/softwares/ctc-linux64-atom-$CTC_VERSION_2_1/cross/bin
+        chmod -R 755 "$RUNSWIFT_CHECKOUT_DIR"/softwares/ctc-linux64-atom-$CTC_VERSION_2_1/cross/i686-aldebaran-linux-gnu/bin
+        chmod -R 755 "$RUNSWIFT_CHECKOUT_DIR"/softwares/ctc-linux64-atom-$CTC_VERSION_2_1/cross/libexec/
     fi
 
     # This is needed for the v6 stuff
     aptinstall python
-    "$RUNSWIFT_CHECKOUT_DIR"/ctc/ctc-linux64-atom-$CTC_VERSION_2_8/yocto-sdk/relocate_qitoolchain.sh
+    "$RUNSWIFT_CHECKOUT_DIR"/softwares/ctc-linux64-atom-$CTC_VERSION_2_8/yocto-sdk/relocate_qitoolchain.sh
 
     # Jayen's magic sauce
     SYSROOT_ARCHIVE="sysroot_legacy.tar.gz"

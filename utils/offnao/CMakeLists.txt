@@ -78,9 +78,9 @@ SET(OFFNAO_MOC
 # this is definitely the wrong way to do it, but i don't know how much longer offnao will survive so i'm not spending time to fix it properly
 # the proper fix is probably to move the block in runswift.cmake up a level so it can be used here
 if(${CTC_DIR} MATCHES atom-2.8)
-    set(Protobuf_INCLUDE_DIRS $ENV{RUNSWIFT_CHECKOUT_DIR}/ctc/ctc-linux64-atom-2.8.1.33/yocto-sdk/sysroots/core2-32-sbr-linux/usr/include/)
+    set(Protobuf_INCLUDE_DIRS $ENV{RUNSWIFT_CHECKOUT_DIR}/softwares/ctc-linux64-atom-2.8.1.33/yocto-sdk/sysroots/core2-32-sbr-linux/usr/include/)
 else () #not ${CTC_DIR} MATCHES atom-2.8
-    set(Protobuf_INCLUDE_DIRS $ENV{RUNSWIFT_CHECKOUT_DIR}/ctc/protobuf-2.6.1/include/)
+    set(Protobuf_INCLUDE_DIRS $ENV{RUNSWIFT_CHECKOUT_DIR}/softwares/protobuf-2.6.1/include/)
 endif(${CTC_DIR} MATCHES atom-2.8)
 
 IF (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} VERSION_GREATER 3.6)

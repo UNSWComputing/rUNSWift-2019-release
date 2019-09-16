@@ -20,7 +20,7 @@ setupctc
 setupdocker
 aptinstall python-pip cmake
 
-CTC_DIR="$RUNSWIFT_CHECKOUT_DIR"/ctc/ctc-linux64-atom-$CTC_VERSION_2_8
+CTC_DIR="$RUNSWIFT_CHECKOUT_DIR"/softwares/ctc-linux64-atom-$CTC_VERSION_2_8
 
 myecho installing qibuild
 pip -q install qibuild --user

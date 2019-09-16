@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.0 FATAL_ERROR)
 
-set(CTC_DIR $ENV{RUNSWIFT_CHECKOUT_DIR}/ctc/ctc-linux64-atom-2.8.1.33)
+set(CTC_DIR $ENV{RUNSWIFT_CHECKOUT_DIR}/softwares/ctc-linux64-atom-2.8.1.33)
 
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_VERSION 4)

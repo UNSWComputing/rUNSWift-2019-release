@@ -139,12 +139,12 @@ SET(SOCCER_SRCS
 ## protobuf stuff
 
 if(${CTC_DIR} MATCHES atom-2.8)
-  set(Protobuf_INCLUDE_DIR $ENV{RUNSWIFT_CHECKOUT_DIR}/ctc/ctc-linux64-atom-2.8.1.33/yocto-sdk/sysroots/core2-32-sbr-linux/usr/include/)
-  set(Protobuf_LIBRARY $ENV{RUNSWIFT_CHECKOUT_DIR}/ctc/ctc-linux64-atom-2.8.1.33/yocto-sdk/sysroots/core2-32-sbr-linux/usr/lib/libprotobuf.so)
+  set(Protobuf_INCLUDE_DIR $ENV{RUNSWIFT_CHECKOUT_DIR}/softwares/ctc-linux64-atom-2.8.1.33/yocto-sdk/sysroots/core2-32-sbr-linux/usr/include/)
+  set(Protobuf_LIBRARY $ENV{RUNSWIFT_CHECKOUT_DIR}/softwares/ctc-linux64-atom-2.8.1.33/yocto-sdk/sysroots/core2-32-sbr-linux/usr/lib/libprotobuf.so)
   set(Protobuf_PROTOC_EXECUTABLE $ENV{RUNSWIFT_CHECKOUT_DIR}/bin/protoc-2.8)
 else () #not ${CTC_DIR} MATCHES atom-2.8
-  set(Protobuf_INCLUDE_DIR $ENV{RUNSWIFT_CHECKOUT_DIR}/ctc/protobuf-2.6.1/include/)
-  set(Protobuf_LIBRARY $ENV{RUNSWIFT_CHECKOUT_DIR}/ctc/protobuf-2.6.1/lib/libprotobuf.so)
+  set(Protobuf_INCLUDE_DIR $ENV{RUNSWIFT_CHECKOUT_DIR}/softwares/protobuf-2.6.1/include/)
+  set(Protobuf_LIBRARY $ENV{RUNSWIFT_CHECKOUT_DIR}/softwares/protobuf-2.6.1/lib/libprotobuf.so)
   set(Protobuf_PROTOC_EXECUTABLE $ENV{RUNSWIFT_CHECKOUT_DIR}/bin/protoc-2.1)
 endif(${CTC_DIR} MATCHES atom-2.8)
 

@@ -109,7 +109,7 @@ function sync_image() {
 
    if [[ "$osversion" = "2.1" ]]; then
       # Copying protobuf libs
-      RSYNC_CONCISE $RUNSWIFT_CHECKOUT_DIR/ctc/protobuf-2.6.1/lib/ nao@$hostname:/home/nao/lib/
+      RSYNC_CONCISE $RUNSWIFT_CHECKOUT_DIR/softwares/protobuf-2.6.1/lib/ nao@$hostname:/home/nao/lib/
    else
       # installed for daemon.py to access lola
       RSYNC_VERBOSE "$RUNSWIFT_CHECKOUT_DIR/softwares/pip/" nao@$hostname:/home/nao/pip/

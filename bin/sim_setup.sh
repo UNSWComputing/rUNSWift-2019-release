@@ -70,7 +70,7 @@ fi
 
 # Prepare system to use simulation build
 
-cd $RUNSWIFT_CHECKOUT_DIR/ctc
+cd $RUNSWIFT_CHECKOUT_DIR/softwares
 
 myecho "Preparing system for use of simulation build..."
 

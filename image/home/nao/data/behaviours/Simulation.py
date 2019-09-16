@@ -33,8 +33,7 @@ if 'RUNSWIFT_CHECKOUT_DIR' in os.environ:
               '/usr/lib/python2.7/dist-packages/ubuntu-sso-client',
               '/usr/lib/python2.7/site-packages/']:
         # Add CTC python
-        sys.path.append(os.environ['RUNSWIFT_CHECKOUT_DIR'] +
-                        '/ctc/sysroot_legacy' + p)
+        sys.path.append(os.environ["RUNSWIFT_CHECKOUT_DIR"] + "/softwares/sysroot_legacy" + p)
 
     # Add our behaviour folders so we can import them
     for p in ['/image/home/nao/data/behaviours/',

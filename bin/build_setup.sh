@@ -23,13 +23,6 @@ cd "$RUNSWIFT_CHECKOUT_DIR"
 echo Your user name: $(git config user.name)
 echo Your email: $(git config user.email)
 
-if [[ ! -f /etc/apt/sources.list.d/github_git-lfs.list ]]; then # 2.3.4 in ubuntu 18.04 is BROKEN
-  aptinstall curl
-  curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-fi
-aptinstall git-lfs
-git lfs pull
-
 # Set up ssh_config
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
@@ -85,6 +78,19 @@ myecho "Creating /home/nao symlink..."
 if [[ ! -L /home/nao ]]; then
     sudo ln -s $RUNSWIFT_CHECKOUT_DIR/image/home/nao /home/
 fi
+
+# for nao os 2.1 (2.8 already has protobuf 2.6.1)
+# use protobuf as it's way more future proof than boost serialization
+(
+  cd "$RUNSWIFT_CHECKOUT_DIR/softwares"
+  wget https://github.com/protocolbuffers/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.bz2
+  [[ -d protobuf-2.6.1 ]] || tar xf protobuf-2.6.1.tar.bz2
+  cd protobuf-2.6.1
+  export PATH="$RUNSWIFT_CHECKOUT_DIR/softwares/ctc-linux64-atom-$CTC_VERSION_2_1/cross/bin:$PATH"
+  ./configure --prefix=$RUNSWIFT_CHECKOUT_DIR/softwares/protobuf-2.6.1 --host=i686-aldebaran-linux-gnu
+  make install
+)
+
 # for nao os 2.8
 # use flite because naoqi waits 10 mins before loading ALTextToSpeech
 (
@@ -96,7 +102,7 @@ fi
     cd flite
     # setup to compile for nao
     CCACHE_PATH=
-    source "$RUNSWIFT_CHECKOUT_DIR/ctc/ctc-linux64-atom-2.8.1.33/yocto-sdk/environment-setup-core2-32-sbr-linux"
+    source "$RUNSWIFT_CHECKOUT_DIR/softwares/ctc-linux64-atom-$CTC_VERSION_2_8/yocto-sdk/environment-setup-core2-32-sbr-linux"
     # set everything up for running from /home/nao
     [[ -f config.status ]] || ./configure --prefix=/home/nao/2.8
     # compile
@@ -144,7 +150,7 @@ done
 #   s3 seems to have a weird issue with --content-disposition and
 #   either of --continue or --timestamping, so we explicitly disable it
 #   https://github.com/UNSWComputing/rUNSWift/pull/1861#discussion_r263960572
-wget --content-disposition=off https://github.com/UNSWComputing/rUNSWift-assets/releases/download/v2017.1/libGL.so.1 --directory-prefix=$RUNSWIFT_CHECKOUT_DIR/ctc/sysroot_legacy/usr/lib
+wget --content-disposition=off https://github.com/UNSWComputing/rUNSWift-assets/releases/download/v2017.1/libGL.so.1 --directory-prefix=$RUNSWIFT_CHECKOUT_DIR/softwares/sysroot_legacy/usr/lib
 
 
 echo

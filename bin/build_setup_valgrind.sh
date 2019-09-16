@@ -24,7 +24,7 @@ aptinstall valgrind libc6-dbg:i386
     cd valgrind-3.14.0
     # setup to compile for nao
     CCACHE_PATH=
-    source "$RUNSWIFT_CHECKOUT_DIR/ctc/ctc-linux64-atom-2.8.1.33/yocto-sdk/environment-setup-core2-32-sbr-linux"
+    source "$RUNSWIFT_CHECKOUT_DIR/softwares/ctc-linux64-atom-$CTC_VERSION_2_8/yocto-sdk/environment-setup-core2-32-sbr-linux"
     # compile only 32-bit and set everything up for running from /home/nao
     [[ -f stamp-h1 ]] || ./configure --prefix=/home/nao/2.8 --enable-only32bit
     # install to /home/nao on your laptop, which should be a symlink to $RUNSWIFT_CHECKOUT_DIR/image
