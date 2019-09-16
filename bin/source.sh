@@ -63,7 +63,7 @@ function setupctc() {
     for CTC_VERSION in "${CTC_VERSIONS[@]}"; do
         LINUX_CTC_ZIP=ctc-linux64-atom-$CTC_VERSION.zip
         if [ ! -f ${LINUX_CTC_ZIP} ]; then
-            echo "Please provide the toolchain zip file: $LINUX_CTC_ZIP in $RUNSWIFT_CHECKOUT_DIR/ctc"
+            echo "Setup failed: Please provide the toolchain zip file: $LINUX_CTC_ZIP in $RUNSWIFT_CHECKOUT_DIR/softwares"
             # Aldebaran should provide a direct download link !!!
             exit 1
         fi
