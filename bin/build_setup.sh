@@ -150,6 +150,7 @@ done
 #   s3 seems to have a weird issue with --content-disposition and
 #   either of --continue or --timestamping, so we explicitly disable it
 #   https://github.com/UNSWComputing/rUNSWift/pull/1861#discussion_r263960572
+mv $RUNSWIFT_CHECKOUT_DIR/softwares/sysroot_legacy/usr/lib/libGL.so.1 $RUNSWIFT_CHECKOUT_DIR/softwares/sysroot_legacy/usr/lib/libGL.so.1.backup
 wget --content-disposition=off https://github.com/UNSWComputing/rUNSWift-assets/releases/download/v2017.1/libGL.so.1 --directory-prefix=$RUNSWIFT_CHECKOUT_DIR/softwares/sysroot_legacy/usr/lib
 
 
