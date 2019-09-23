@@ -1,4 +1,4 @@
-Welcome to the rUNSWift 2018 git repository.
+Welcome to the rUNSWift 2019 git repository.
 
 The directory structure is:
 
@@ -13,9 +13,9 @@ The directory structure is:
     This is the source code for any off-nao utilities, such as colour
     calibration or offline debugging utilities.
 
-The [wiki](../../wiki) holds the documentation.
+The [manual](https://unswcomputing.github.io/rUNSWift-Manual/index.html) holds the documentation.
 
 Of note:
 
-* [Getting Started](../../wiki/Getting-Started)
-* [rUNSWift Infrastructure](../../wiki/rUNSWift-Infrastructure)
+* [Running the Robot](https://unswcomputing.github.io/rUNSWift-Manual/running/index.html)
+* [Architecture](https://unswcomputing.github.io/rUNSWift-Manual/architecture.html)
