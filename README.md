@@ -13,9 +13,9 @@ The directory structure is:
     This is the source code for any off-nao utilities, such as colour
     calibration or offline debugging utilities.
 
-The [manual](https://unswcomputing.github.io/rUNSWift-Manual/index.html) holds the documentation.
+The documentation can be found [here](https://runswift.readthedocs.io/en/2019/index.html).
 
 Of note:
 
-* [Running the Robot](https://unswcomputing.github.io/rUNSWift-Manual/running/index.html)
-* [Architecture](https://unswcomputing.github.io/rUNSWift-Manual/architecture.html)
+* [Running the Robot](https://runswift.readthedocs.io/en/2019/running/index.html)
+* [Architecture](https://runswift.readthedocs.io/en/2019/architecture.html)
